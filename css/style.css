@@ -1,0 +1,69 @@
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#background {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+#nav-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 992px;
+}
+
+#app,
+#content {
+  max-width: 992px;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#question-card, #about-card {
+  padding: 1rem;
+  background-color: rgba(245, 245, 245, 0.95);
+}
+
+#neutral-choice-switch-form {
+  margin-bottom: 2rem;
+}
+
+.pre-button {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.choice-button {
+  height: 90%;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+#progress-bar {
+  margin-top: 1rem;
+}
+
+#score-comment-table colgroup col:first-child {
+  width: 20%;
+}
+
+#score-comment-table colgroup col:last-child {
+  width: 80%;
+}
+
+#about-card {
+  margin-bottom: 3rem;
+}
+
+#about-card .row {
+  margin-top: 2rem;
+}

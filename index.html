@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <title>Life Simulator</title>
+</head>
+
+<body>
+  <div id="background"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <div id="nav-buttons" class="container-fluid">
+      <a class="navbar-brand">Life Simulator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="">Play</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="about" href="about.html">About</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <a class="me-2" href="https://github.com/arraysius/" target="_blank">
+            <img src="images/GitHub-Mark-Light-32px.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Agreement Modal -->
+  <div class="modal fade" ref="agreementModal" id="agreementModal" data-bs-backdrop="false" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agreementModalLabel">
+            Rules of the Game
+          </h5>
+        </div>
+        <div class="modal-body">
+          <p>Welcome to <em>Life Simulator</em>!</p>
+          <p>
+            You will be presented with {{ questions.length - 1 }} scenarios.
+            Select the options as to how you think you would in your own
+            life and try to achieve a high score!
+          </p>
+          <p>
+            By playing <em>Life Simulator</em>, I agree to the following:
+          </p>
+          <ol>
+            <li>I will not challenge the provided choices</li>
+            <li>I accept the scores attributed to the choices</li>
+            <li>
+              I will not raise disputes with the creator of
+              <em>Life Simulator</em>
+            </li>
+            <li>I will accept the final score</li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Agree
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app">
+
+    <!-- Finish Modal -->
+    <div class="modal fade" id="finishModal" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="finishModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="finishModalLabel">Life Completed!</h5>
+          </div>
+          <div class="modal-body">
+            <!-- Final score -->
+            <h4>Your final score: <strong>{{ score }}</strong></h4>
+            <br />
+
+            <!-- Score comment table -->
+            <table id="score-comment-table" class="table table-striped">
+              <colgroup>
+                <col span="1" />
+                <col span="1" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="text-center">Score</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">50</td>
+                  <td>
+                    Well done! You are a model citizen and everybody else
+                    should follow in your footsteps.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">30 to 49</td>
+                  <td>
+                    You made many good choices and led a great life!
+                    Reconsider certain choices so that you can become a model
+                    citizen.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">1 to 29</td>
+                  <td>
+                    You have led a decent life. However there is still room
+                    for improvement.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">0</td>
+                  <td>
+                    Either your good choices have offset your bad ones, or you
+                    have chosen a neutral position throughout your life. It is
+                    highly recommended to select the good choices and work
+                    towards being a model citizen.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">-1 to -29</td>
+                  <td>
+                    You have made more bad choices than good ones in your
+                    life. Continuing down this path will lead to poor quality
+                    of life.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">-30 to -49</td>
+                  <td>
+                    You have made many more bad choices than good ones
+                    thorughout your life. You are an imperfect citizen and
+                    will face many obstacles if you do not make better
+                    choices.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">-50</td>
+                  <td>
+                    How could this have happened? You have constantly made bad
+                    choices throughout your life. You are an inferor citizen
+                    and will not be accepted by society.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <hr />
+
+            <h4>Unlocking the neutral choice</h4>
+            <p>
+              You may have noticed that the neutral choice (+0) is locked. It
+              is entirely possible to unlock and select the neutral choice,
+              however it is not recommended.
+            </p>
+            <p>
+              Unlocking the neutral choice requires you to have knowledge about front end web development. Here are some
+              resources to guide you if you choose to unlock the neutral choice:
+            </p>
+            <ol>
+              <li>
+                <a href="https://en.wikipedia.org/wiki/Front-end_web_development"
+                  target="_blank">https://en.wikipedia.org/wiki/Front-end_web_development</a>
+              </li>
+              <li>
+                <a href="https://www.codecademy.com/catalog/language/html-css" target="_blank">
+                  https://www.codecademy.com/catalog/language/html-css
+                </a>
+              </li>
+              <li>
+                <a href="https://www.w3schools.com/html/" target="_blank">
+                  https://www.w3schools.com/html/
+                </a>
+              </li>
+              <li>
+                <a href="https://www.w3schools.com/css/" target="_blank">https://www.w3schools.com/css/</a>
+              </li>
+              <li>
+                <a href="https://www.w3schools.com/js/" target="_blank">https://www.w3schools.com/js/</a>
+              </li>
+              <li>
+                <a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a>
+              </li>
+              <li>
+                <a href="https://v3.vuejs.org/guide/introduction.html"
+                  target="_blank">https://v3.vuejs.org/guide/introduction.html</a>
+              </li>
+              <li>
+                <a href="https://developer.chrome.com/docs/devtools/"
+                  target="_blank">https://developer.chrome.com/docs/devtools/</a>
+              </li>
+              <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Tools"
+                  target="_blank">https://developer.mozilla.org/en-US/docs/Tools</a>
+              </li>
+              <li>
+                <a href="https://developer.apple.com/safari/tools/"
+                  target="_blank">https://developer.apple.com/safari/tools/</a>
+              </li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <a href="about.html" class="btn btn-secondary">About</a>
+            <a href="" type="button" class="btn btn-primary">Play Again</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div id="question-card" class="card">
+      <div class="card-body">
+        <div class="container">
+          <!-- Neutral choice switch -->
+          <div id="neutral-choice-switch-form" class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" v-model="neutralLocked"
+              disabled />
+            <label class="form-check-label" for="flexSwitchCheckDefault">
+              Neutral choice {{ neutralLocked ? "locked" : "unlocked" }}
+            </label>
+          </div>
+
+          <!-- Score -->
+          <h1 class="card-title pre-button">Score: {{ score }}</h1>
+
+          <!-- Question -->
+          <h2 class="card-text pre-button">
+            {{ questions[questionNum].question }}
+          </h2>
+
+          <h4 class="card-text pre-button">Do you:</h4>
+
+          <!-- Buttons -->
+          <div class="row">
+            <div class="col-sm-4">
+              <button class="btn btn-lg btn-danger choice-button" @click="updateScore(-5)">
+                {{ questions[questionNum].options.bad }}
+                <br />
+                (-5)
+              </button>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-lg btn-primary choice-button" @click="updateScore(0)" :disabled="neutralLocked">
+                {{ questions[questionNum].options.neutral }}
+                <br />
+                (+0)
+              </button>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-lg btn-success choice-button" @click="updateScore(+5)">
+                {{ questions[questionNum].options.good }}
+                <br />
+                (+5)
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div id="progress-bar" class="progress">
+            <div class="progress-bar" role="progressbar" :style="{ width: progress + '%' }" :aria-valuenow="progress"
+              aria-valuemin="0" aria-valuemax="100">
+              {{ questionNum }} / {{ questions.length - 1 }} Answered
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue.global.prod.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Animated background scripts -->
+    <script src="js/three.r119.min.js"></script>
+    <script src="js/vanta.net.min.js"></script>
+    <script src="js/load_vanta.js"></script>
+</body>
+
+</html>
