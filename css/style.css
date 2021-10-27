@@ -28,9 +28,11 @@ hr {
   padding-right: 1rem;
 }
 
-#question-card, #about-card {
+#question-card,
+#about-card {
   padding: 1rem;
   background-color: rgba(245, 245, 245, 0.95);
+  margin-bottom: 3rem;
 }
 
 #neutral-choice-switch-form {
@@ -58,10 +60,6 @@ hr {
 
 #score-comment-table colgroup col:last-child {
   width: 80%;
-}
-
-#about-card {
-  margin-bottom: 3rem;
 }
 
 #about-card .row {
