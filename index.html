@@ -42,47 +42,46 @@
     </div>
   </nav>
 
-  <!-- Agreement Modal -->
+  <!-- App -->
+  <div id="app">
+    <!-- Agreement Modal -->
   <div class="modal fade" ref="agreementModal" id="agreementModal" data-bs-backdrop="false" data-bs-keyboard="false"
-    tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="agreementModalLabel">
-            Rules of the Game
-          </h5>
-        </div>
-        <div class="modal-body">
-          <p>Welcome to <em>Life Simulator</em>!</p>
-          <p>
-            You will be presented with {{ questions.length - 1 }} scenarios.
-            Select the options as to how you think you would in your own
-            life and try to achieve a high score!
-          </p>
-          <p>
-            By playing <em>Life Simulator</em>, I agree to the following:
-          </p>
-          <ol>
-            <li>I will not challenge the provided choices</li>
-            <li>I accept the scores attributed to the choices</li>
-            <li>
-              I will not raise disputes with the creator of
-              <em>Life Simulator</em>
-            </li>
-            <li>I will accept the final score</li>
-          </ol>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-            Agree
-          </button>
-        </div>
+  tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agreementModalLabel">
+          Rules of the Game
+        </h5>
+      </div>
+      <div class="modal-body">
+        <p>Welcome to <em>Life Simulator</em>!</p>
+        <p>
+          You will be presented with {{ questions.length - 1 }} scenarios.
+          Select the options as to how you think you would in your own
+          life and try to achieve a high score!
+        </p>
+        <p>
+          By playing <em>Life Simulator</em>, I agree to the following:
+        </p>
+        <ol>
+          <li>I will not challenge the provided choices</li>
+          <li>I accept the scores attributed to the choices</li>
+          <li>
+            I will not raise disputes with the creator of
+            <em>Life Simulator</em>
+          </li>
+          <li>I will accept the final score</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Agree
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- App -->
-  <div id="app">
+</div>
 
     <!-- Finish Modal -->
     <div class="modal fade" id="finishModal" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
